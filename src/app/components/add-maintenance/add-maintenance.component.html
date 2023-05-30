@@ -1,0 +1,149 @@
+<form [formGroup]="maintenanceForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Add New Maintenance</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label> Description</mat-label>
+            <input matInput placeholder="Description of maintenance" formControlName="description">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label> Date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Maintenance Date" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="maintenanceForm.controls['date'].hasError('required')">
+              Date is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label> Status</mat-label>
+            <mat-select placeholder="Status" formControlName="status">
+              <mat-option *ngFor="let status of statuses" [value]="status">
+                {{ status }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="maintenanceForm.controls['status'].hasError('required')">
+              Status is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label> Mileage</mat-label>
+            <input matInput #postalCode maxlength="5" placeholder="Input Mileage when Maintenance Done" type="number" formControlName="mileage">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <!-- <mat-form-field>
+            <mat-label>Items</mat-label> -->
+          
+            <table>
+              <thead>
+                <tr>
+                  <th><strong>Name</strong></th>
+                  <th><strong>Price </strong></th>
+                  <th><strong>Quantity</strong></th>
+                  <th><button type="button" (click)="addItem()"><mat-icon>add_circle</mat-icon></button></th>
+                </tr>
+              </thead>
+              <tbody formArrayName="items">
+                <tr *ngFor="let item of itemArray.controls;let i=index" [formGroupName]="i">
+                  <td>
+                  <div class="col" style="min-width: fit-content;">
+                    <mat-select style="width:150px;" placeholder="Item Name" formControlName="id" (selectionChange)="setPrice($event,i)">
+                      <mat-option style="width:150px; font-size:10px" *ngFor="let item of items" [value]="item.id">
+                        {{ item.name }}
+                      </mat-option>
+                    </mat-select>
+                  </div>
+                </td>
+                <input type="hidden" formControlName="name">
+                    <!-- <input type="text" size="40" formControlName="name"> -->
+                  <td>
+                    <div class="col">
+                    <input matInput type="number" formControlName="price" readonly>
+                  </div>
+                  </td>
+                  <td>
+                    <div class="col">
+                      <input matInput type="number"  formControlName="quantity">
+                    </div>
+                  </td>
+                  <td> <button type="button" (click)="removeItem(i)">
+                    <mat-icon>remove_circle</mat-icon>
+                  </button> </td>
+                </tr>
+              </tbody>
+            </table>
+          <!-- </mat-form-field> -->
+        </div>
+      </div>
+<!-- 
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Address" formControlName="address"></textarea>
+            <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
+              Address is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row" *ngIf="!hasUnitNumber">
+        <div class="col">
+          <button mat-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
+            + Add C/O, Apt, Suite, Unit
+          </button>
+        </div>
+      </div>
+      <div class="row" *ngIf="hasUnitNumber">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="City" formControlName="city">
+            <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
+              City is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="shipping">
+            <mat-radio-button value="free">Free Shipping</mat-radio-button>
+            <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
+            <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div> -->
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

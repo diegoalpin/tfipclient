@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: tfipcarcare-frontend-rev
+spec:
+  selector:
+    app: tfipcarcare-frontend-rev
+  ports:
+  - protocol: TCP
+    port: 80
+    nodePort: 30001
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tfipcarcare-frontend-rev
+spec:
+  selector:
+      matchLabels:
+        app: tfipcarcare-frontend-rev
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: tfipcarcare-frontend-rev
+    spec:
+      containers:
+        - name: tfipcarcare-frontend-rev
+          image: diegoalpinncs/tfip-car-care-client-rev:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

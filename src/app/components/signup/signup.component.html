@@ -1,0 +1,105 @@
+<form [formGroup]="regForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+      <mat-card-header class="center">
+        <mat-card-title><h1 class="heading-21921"> Sign Up Form </h1></mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="center">
+        <!-- firstName -->
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label> First Name</mat-label>
+              <input matInput placeholder="First Name" formControlName="firstName">
+              <mat-error *ngIf="isControlInvalid('firstName')">
+                First Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- lastName -->
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label> Last Name</mat-label>
+              <input matInput placeholder="Last Name" formControlName="lastName">
+              <mat-error *ngIf="isControlInvalid('lastName')">
+                Last Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- email -->
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label> Email Address</mat-label>
+              <input matInput placeholder="Email Address" formControlName="email">
+              <mat-error *ngIf="regForm.controls['email'].hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngIf="isControlInvalid('email')">
+                Please use a <strong> valid email address</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- pwd -->
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label> Password</mat-label>
+              <input [type]="changetype?'password':'text'" matInput placeholder="First Name" formControlName="pwd">
+              <span class="eyeicon" (click)="viewPassPwd()"><i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i></span>
+              <!-- <mat-error *ngIf="regForm.controls['pwd'].hasError('minlength')"> -->
+              <mat-error *ngIf="isControlInvalid('pwd')">
+                Password should be min. <strong>5 characters</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- repeatPwd -->
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label> Re-enter Password</mat-label>
+              <input [type]="changetypeRepeat?'password':'text'" matInput placeholder="Re-enter Your Password" formControlName="repeatPwd">
+              <span class="eyeicon" (click)="viewPassRepeat()"><i [ngClass]="visibleRepeat?'fa fa-eye':'fa fa-eye-slash'"></i></span>
+              <!-- <mat-error *ngIf="pwdExact == false"> -->
+              <mat-error *ngIf="isControlInvalid('repeatPwd')">
+                Please re-enter <strong>same password</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- address -->
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label> Address</mat-label>
+              <input matInput placeholder="Address" formControlName="address">
+              <mat-error *ngIf="isControlInvalid('address')">
+                Address is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- phoneNumber -->
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label> phoneNumber</mat-label>
+              <input type="number" matInput placeholder="Phone Number" formControlName="phoneNumber">
+              <mat-error *ngIf="isControlInvalid('phoneNumber')">
+                Phone Number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        
+      </mat-card-content>
+      <mat-card-actions>
+        <button class ="btn-custom center" mat-raised-button color="primary" type="submit" [disabled]="regForm.invalid|| !checkPwdExact">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  

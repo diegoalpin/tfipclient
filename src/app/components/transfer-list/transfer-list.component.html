@@ -1,0 +1,55 @@
+<div class="grid-container">
+    <h1 class="mat-h1 heading-21921">{{user.firstName}} {{user.lastName}}'s Incoming Transfer List</h1>
+    <h2>Hi, {{user.firstName}}</h2>
+    <br>
+    <h4 *ngIf="!carsExist" class="mat-h1 heading-21921">
+        You have no cars available to purchase</h4>
+
+    <mat-grid-list *ngIf="!!carsExist" cols="2" rowHeight="350px">
+      <mat-grid-tile *ngFor="let car of carsToBuy;let idx=index" [colspan]=1 [rowspan]=1>
+        <mat-card class="dashboard-card">
+          <mat-card-header class="center">
+            <mat-card-title class="center">
+              <!-- <h2 class="heading-21921" style="margin-left: 135%;margin: bottom 0px;">{{car.carPlate}}</h2> -->
+              <h1 class="heading-21921" style="margin: bottom 0px;">{{car.carPlate}}</h1>
+              <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item>Expand</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu> -->
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <br>
+            <div>
+              <a class="no-link" [routerLink]="['/car',car.id]">
+                <img src="https://via.placeholder.com/150x150" alt="Placeholder image">
+              </a>
+            </div>
+            <div>Model : {{car.brand}} - {{car.model}}</div>
+            <div>Year : {{car.yearManufactured}}</div>
+            
+            <br>
+            <span style="margin-right:10px ;">Sell To:</span>
+            
+              <!-- <select (change)="setSellTo($event)">
+                <option value=null>Select Buyer</option>
+                <option *ngFor="let user of otherCustomers" [value]="user.id">{{user.firstName}} {{user.lastName}}
+                </option>
+              </select> -->
+            
+            <button type="button" class="btn-custom" (click)="pay(idx)"> Purchase for $5</button>
+  
+            <br>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  <div class="center">
+    
+    <!-- <button type="button" class="btn-custom" (click)="addCar()">Add A Car</button> -->
+  </div>
+  </div>
+  

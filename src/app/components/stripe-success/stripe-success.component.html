@@ -1,0 +1,12 @@
+<div class="grid-container">
+    <h1 class="mat-h1 heading-21921">{{user.firstName}} {{user.lastName}}'s Successful Purchase</h1>
+    <h2>Hi, {{user.firstName}}</h2>
+    <br>
+    <h4 *ngIf="!newCarPlate" class="mat-h1 heading-21921">
+        You did not pay for any car purchase</h4>
+
+    <h4 *ngIf="!!newCarPlate" class="mat-h1 heading-21921">
+            Your purchase for {{newCarPlate}} is successful!</h4>
+
+    <button type="button" class="btn-custom" (click)="goDashboard()"> Back to Dashboard</button>
+</div>

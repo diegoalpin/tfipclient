@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: tfip-frontend-nohost
+spec:
+  selector:
+    app: tfip-frontend-nohost
+  ports:
+  - protocol: TCP
+    port: 4200
+    nodePort: 30001
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tfip-frontend-nohost
+spec:
+  selector:
+      matchLabels:
+        app: tfip-frontend-nohost
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: tfip-frontend-nohost
+    spec:
+      containers:
+        - name: tfip-frontend-nohost
+          image: diegoalpinncs/tfip-client-nohostcheck:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4200

@@ -1,0 +1,125 @@
+<div class="site-section">
+  <div class="table-responsive-md">
+    <div class="row mb-4">
+      <div class="col-md-7" style="margin-top: 10px;">
+        <h2 class="heading-21921">All Maintenances of {{user.firstName}} {{user.lastName}} </h2>
+      </div>
+    </div>
+    <!-- <div class="row text-white align-items-center text-center h-100">
+      <div class="col-md-4 bg-dark p-5" style="height: 130px">
+        <h1 class="text-white">{{(transactions && transactions.length>0) ? (transactions[0].closingBalance | currency) : ' '}}</h1>
+      </div>
+    </div> -->
+  </div>
+  <div class="table-responsive-md">
+    <div class="row mb-4">
+      <div class="col-md-7">
+        <h3 class="heading-21921" style="margin: 0 0 0 0;">Maintenance Details</h3>
+      </div>
+    </div>
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th (click)="sort('id')" scope="col"> ID
+            <i class="fa"
+              [ngClass]="{
+                'fa-chevron-up': sortColumn === 'id' && !ascending,
+                'fa-chevron-down': sortColumn === 'id' && ascending
+              }"
+              aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('description')" scope="col">Description
+            <i class="fa"
+              [ngClass]="{
+                'fa-chevron-up': sortColumn === 'description' && !ascending,
+                'fa-chevron-down': sortColumn === 'description' && ascending
+              }"
+              aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('date')" scope="col">Date
+            <i class="fa"
+              [ngClass]="{
+                'fa-chevron-up': sortColumn === 'date' && !ascending,
+                'fa-chevron-down': sortColumn === 'date' && ascending
+              }"
+              aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('status')" scope="col">Status
+            <i class="fa"
+              [ngClass]="{
+                'fa-chevron-up': sortColumn === 'status' && !ascending,
+                'fa-chevron-down': sortColumn === 'status' && ascending
+              }"
+              aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('mileage')" scope="col">Mileage(in Km)
+            <i class="fa"
+              [ngClass]="{
+                'fa-chevron-up': sortColumn === 'mileage' && !ascending,
+                'fa-chevron-down': sortColumn === 'mileage' && ascending
+              }"
+              aria-hidden="true"></i>
+            </th>
+          <th (click)="sort('carPlate')" scope="col">Car Id
+            <i class="fa"
+              [ngClass]="{
+                'fa-chevron-up': sortColumn === 'carPlate' && !ascending,
+                'fa-chevron-down': sortColumn === 'carPlate' && ascending
+              }"
+              aria-hidden="true"></i>
+          </th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let maintenance of sortedMaintenance
+              | slice : (currentPage - 1) * pageSize : currentPage * pageSize
+          "
+        >
+          <td>{{ maintenance.id }}</td>
+          <td>{{ maintenance.description }}</td>
+          <td>{{ maintenance.date | date }}</td>
+          <td>{{ maintenance.status }}</td>
+          <td>{{ maintenance.mileage }}</td>
+          <td><a [routerLink]="['/car',maintenance.carId]"> {{ maintenance.carId }}</a></td>
+          <td>
+            <button type="button" title="Details" (click)="view(maintenance.id)">
+              <mat-icon>info</mat-icon>
+            </button>
+            <button type="button" title="Edit" (click)="edit(maintenance.id)">
+              <mat-icon alt="edit">edit</mat-icon>
+            </button>
+            <button type="button" title="Delete" (click)="delete(maintenance.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div row mb-8 class="right">
+    <button class="btn-prev-next"
+      (click)="currentPage = currentPage - 1"
+      [disabled]="currentPage == 1"
+    >
+      Previous
+    </button>
+    <span>{{ currentPage }}/{{ totalPages }}</span>
+    <button class="btn-prev-next"
+      (click)="currentPage = currentPage + 1"
+      [disabled]="currentPage == totalPages"
+    >
+      Next
+    </button>
+  </div>
+  <div class="row mb-5 center">
+    <div class="col">
+      <div class="">
+        <button class="btn btn-custom" routerLink="/dashboard">BACK</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+.mat-form-field{
+    width:400px !important;
+  }
+  ::ng-deep .mat-input-wrapper{
+    width:400px !important;
+  }
+
+  .full-width {
+    width: 100%;
+    width:400px !important
+  }
+  
+  .shipping-card {
+    min-width: 300px;
+    margin: 20px auto;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .col {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .col:last-child {
+    margin-right: 0;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
+  button :hover{
+    cursor: pointer;
+  }
+  .eyeicon {
+    position: absolute;
+    right: -10px;
+    top: 15px;
+    cursor: pointer;
+}

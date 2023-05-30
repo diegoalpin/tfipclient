@@ -1,0 +1,55 @@
+.grid-container {
+    margin: 20px;
+  }
+  
+  .dashboard-card {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 10px;
+  }
+  .sold{
+    opacity: 0.3;
+  }
+  
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  
+  .dashboard-card-content {
+    text-align: center;
+  }
+  
+  a:hover, a:visited, a:link, a:active
+  {
+      text-decoration: none;
+      color: inherit;
+  }
+  /* .no-link{
+    text-decoration: none;
+  } */
+  
+  .btn-custom{
+    color: #fff;
+    background-color: #b446b8;
+    border-color: #b446b8;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  button {
+    border: none;
+    background-color: transparent;
+  }
+  button :hover{
+    cursor: pointer;
+  }
+  img{
+    max-width: 125px;
+    max-height: 125px;
+  }
+  mat-card-header{
+    max-height: 20px;
+  }

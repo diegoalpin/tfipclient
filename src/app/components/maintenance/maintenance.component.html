@@ -1,0 +1,89 @@
+<div class="site-section">
+  <div class="table-responsive-md">
+    <div class="row mb-4">
+      <div class="col-md-7" style="margin-top: 10px;">
+        <h3 class="heading-21921">Maintenance Id: {{maintenance?.id}}</h3>
+        <h3 class="heading-21921">Description: {{maintenance?.description}}</h3>
+        <h3 class="heading-21921">Maintenance date: {{maintenance?.date|date}}</h3>
+        <h3 class="heading-21921">Status: {{maintenance?.status}}</h3>
+        <h3 class="heading-21921">Car's mileage: {{maintenance?.mileage}}</h3>
+      </div>
+    </div>
+    <div class="row text-white align-items-center text-center h-100">
+      <div class="col-md-5 bg-dark p-4" style="height: 80px">
+        <h4 class="text-white">Total Cost : SGD {{maintenance?.cost}} </h4>
+      </div>
+    </div>
+  </div><br><br>
+  <div class="table-responsive-md">
+    <div class="row">
+      <div class="col-md-7">
+        <h2 class="heading-21921" style="font-weight: bolder;margin: 0 0 0 0;">Item Details in Maintenance</h2>
+      </div>
+    </div>
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th (click)="sort('id')" scope="col"> ID
+            <i class="fa"
+              [ngClass]="{
+                'fa-chevron-up': sortColumn === 'id' && !ascending,
+                'fa-chevron-down': sortColumn === 'id' && ascending
+              }"
+              aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('name')" scope="col">Name
+            <i class="fa"
+              [ngClass]="{
+                'fa-chevron-up': sortColumn === 'name' && !ascending,
+                'fa-chevron-down': sortColumn === 'name' && ascending
+              }"
+              aria-hidden="true"></i>
+          </th>
+          <th (click)="sort('price')" scope="col">Price
+            <i class="fa"
+              [ngClass]="{
+                'fa-chevron-up': sortColumn === 'price' && !ascending,
+                'fa-chevron-down': sortColumn === 'price' && ascending
+              }"
+              aria-hidden="true"></i>
+          </th>
+          <th scope="col">Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let itemList of sortedItemListArray
+              | slice : (currentPage - 1) * pageSize : currentPage * pageSize">
+          <td>{{ itemList.item.id }}</td>
+          <td>{{ itemList.item.name }}</td>
+          <td>{{ itemList.item.price }}</td>
+          <td>{{ itemList.quantity }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div row mb-8 class="right">
+    <button class="btn-prev-next"
+      (click)="currentPage = currentPage - 1"
+      [disabled]="currentPage == 1"
+    >
+      Previous
+    </button>
+    <span>{{ currentPage }}/{{ totalPages }}</span>
+    <button class="btn-prev-next"
+      (click)="currentPage = currentPage + 1"
+      [disabled]="currentPage == totalPages"
+    >
+      Next
+    </button>
+  </div>
+  <div class="row mb-5 center">
+    <div class="col">
+      <div>
+        <button class="btn btn-custom" routerLink="/dashboard">BACK</button>
+        <button class="btn btn-custom" (click)="goToEdit()">UPDATE</button>
+      </div>
+    </div>
+  </div>
+</div>

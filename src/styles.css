@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../src/assets/css/font-awesome.css";
+@import "../src/assets/css/bootstrap.css";
+
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+    background:rgb(235, 234, 233);;
+    background-size: cover;
+    text-align:justify;
+    font-family: Georgia, serif; }
+    
+    .heading-21921 {
+      position: relative;
+      padding: 0;
+      margin: 0 0 0.5rem 0;
+      line-height: 1;
+      font-weight: 900 !important;
+      text-align: left;
+    }
+    .btn-custom{
+        color: #fff;
+        background-color: #b446b8;
+        border-color: #b446b8;
+      }
+
+      .center {
+        margin: auto;
+        width: fit-content;
+        padding: 10px;
+      }
+
+      .right {
+        margin-left: auto;
+        margin-right: 0;
+        width:fit-content;
+        padding: 10px;
+      }
+
+      .btn-prev-next{
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: auto;
+      }
+
+      .mat-input-wrapper{
+        width:400px !important;
+      }
+      
